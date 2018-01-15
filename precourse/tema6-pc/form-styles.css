@@ -1,0 +1,43 @@
+.forms {
+
+	background-color: #e0dcd4;
+	width:500px;	
+	position:relative;
+	top:5px;
+	left: 5px;
+}
+
+
+h1 {
+	font-size: 20px;
+
+}
+
+input {
+	position: absolute;
+	left: 180px;
+	box-shadow: 1px 1px #e0dcd4;
+	border-radius:5px;
+	;
+}
+
+form {
+	position: relative;
+	left:25px;
+}
+
+.wrap {
+	background-color: #F2F2F2;
+	width:510px;
+	height: 460px;
+}
+
+.button {
+	position: relative;
+	margin:30px 180px;	
+	text-align:center;
+	background-color: #9C8C78;
+	padding:3px 0px;
+	border-radius: 5px;
+
+}
