@@ -14,3 +14,5 @@
 * git remote add origin "address": conectar con gitHub
 * git push -u origin 'branch': para subir ramas al gitHub
 * git branch -d 'branch': borrar rama
+* git push origin 'branch': actualizar repositorio online a partir del repositorio local
+* git pull origin 'branch': obtener el repositorio online para trabajarlo en local
