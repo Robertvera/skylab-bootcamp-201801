@@ -9,3 +9,4 @@ git branch: podemos ver las ramas que hay en el repositorio local
 git checkout -b (nombre rama): añadir una nueva rama
 git checkout (nombre rama): cambiar de rama
 git diff RUTA FICHERO: ver lo que ha cambiado 
+git merge: juntar todo
