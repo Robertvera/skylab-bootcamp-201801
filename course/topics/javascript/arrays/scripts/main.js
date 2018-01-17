@@ -11,10 +11,10 @@ console.log("should return true if the input is an array: " + isArray([1, 2, 3, 
 var beatles = ['John', 'George', 'Ringo', 'Paul'];
 
 function joinArray(a) {
-    return a.join();
+    return a.join(',');
 }
 
-console.log("should return the words in the array in a single string: ", joinArray(beatles))
+console.log("should return the words in the array in a single string: ", joinArray(beatles));
 
 //Write a JavaScript function to clone an array.
 
@@ -25,8 +25,8 @@ function cloneArray(a) {
     return clonedArray;
 }
 
-console.log("should return the Beatle's array cloned: ", cloneArray([1, 2, 3, 4]))
-console.log("should return the Beatle's array cloned: ", cloneArray([1, 2, [4, 0]]))
+console.log("should return the [1,2,3,4] array cloned: ", cloneArray([1, 2, 3, 4]))
+console.log("should return the [1,2,[4,0]] array cloned: ", cloneArray([1, 2, [4, 0]]))
 
 //Write a JavaScript function to find the difference of two arrays.
 
@@ -179,3 +179,32 @@ function mergeArrays(arr1, arr2) {
 }
 
 console.log('El resultado debe ser [3,2,30,1] --->  ', mergeArrays([1, 2, 3], [2, 30, 1]))
+
+
+//Write a JavaScript program which accept a number as input and insert dashes (-) between each two even numbers. For example if you accept 025468 the output should be 0-254-6-8.
+
+function separateEven(n) {
+    var nString = n.toString().split('')
+    var dashArray = [];
+    for (var i = 0; i < nString.length; i++) {
+        if (nString[i] % 2 == 0 && nString[i + 1] % 2 == 0) {
+            dashArray.push(nString[i]);
+            dashArray.push('-');
+        } else {
+            dashArray.push(nString[i]);
+        }
+    }
+    var dashString = dashArray.join('').toString();
+    return dashString;
+}
+
+console.log('The result of 25468 debe ser 254-6-8--->  ', separateEven(25468))
+console.log('The result of 8376493234 debe ser 8376-493234--->  ', separateEven(8376493234))
+console.log('The result of 24680248 debe ser 2-4-6-8-0-2-4-8--->  ', separateEven(24680248))
+
+/*Write a JavaScript program to find the most frequent item of an array.
+
+    Sample array : var arr1=[3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3];
+    Sample Output : a ( 5 times ) */
+
+
