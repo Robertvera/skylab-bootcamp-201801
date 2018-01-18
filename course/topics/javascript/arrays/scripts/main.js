@@ -207,4 +207,23 @@ console.log('The result of 24680248 debe ser 2-4-6-8-0-2-4-8--->  ', separateEve
     Sample array : var arr1=[3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3];
     Sample Output : a ( 5 times ) */
 
+function countItems(a) {
+    var acc = 0;
+    var arr = [];
+    for (var i = 0; i < a.length; i++) {
+        for (var j = 1; j < a.length; j++) {
+            if (a[i] == a[j]) {
+                acc++
+            }
+        }
+        arr.push([a[i], acc])
+        console.log(a[i], '--> ', acc, ' times.')
+        acc = 0;
+    }
+    return arr;
+}
+testArray = countItems([3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3]);
 
+
+
+//console.log('The result of [3, a, a, a, 2, 3, a, 3, a, 2, 4, 9, 3] should be a (5 times) --->  ', countItems([3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3]))

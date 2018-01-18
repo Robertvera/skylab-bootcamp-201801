@@ -87,12 +87,13 @@ greeting() //returns: Hello. My name is <Mr./Mrs> <last-name> and I teach <subje
 function Teacher (firstName,lastName,age,gender,interests,subject) {
     Person.call(this,firstName,lastName,age,gender,interests);
     this.subject = subject;
-}
+};
 
 Teacher.prototype = new Person();
 
 Teacher.prototype.greeting = function () {
-    return 'Hello. My name is ' + this.firstName + ' ' + this.lastName + ' and I teach ' + this.subject;
-}
+    return 'Hello. My name is '+(this.gender ==="Male"?"Mr. ":"Ms.") + this.lastName + ' and I teach ' + this.subject;
+};
 
-var c = new Teacher('ZeBing','Lu',31,"Female",['books','cinema','traveling','swimming'],'chinese');
+var c = new Teacher('ZeBing','Lu',31,"Female",['books','cinema','travelling','swimming'],'chinese');
+var d = new Teacher('Marshall','Mathers',31,"Male",['beer','sports','basketball','swimming'],'music');

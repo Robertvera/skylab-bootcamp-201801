@@ -6,4 +6,4 @@ function pattern (a, length) {
     }
 }
 
-pattern ('*',5)
+console.log(''+pattern ('*',5)) 
