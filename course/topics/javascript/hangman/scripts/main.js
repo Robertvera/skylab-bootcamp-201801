@@ -1,74 +1,61 @@
-function Hangman(word, attempts) {
+function hangmanResultsWellDoneWhenAssertingWordOnThe7thAttempt() {
+    var game = new Hangman('hello', 10);
 
-    var w = word.split('');
-    var rounds = attempts;
-    var underscore = new Array(w.length)
-
-    for (var i = 0; i < underscore.length; i++)
-        underscore[i] = '_';
-
-    function win(letter) {
-        if (letter === word || underscore.join('') === word)
-            return true;
-    }
-
-    function gameOver(letter) {
-        if (attempts === 0) {
-            return true;
-        } else if (letter.length > 1 && letter != word){
-            return true;
-        }
-        
-    }
-
-    this.try = function (letter) {
-        var check = false;
-        for (var i = 0; i < w.length; i++) {
-            if (letter === w[i]) {
-                underscore[i] = w[i];
-                check = true;
-            }
-        }
-        if (check === true) {
-            check = false;
-            if (win(letter)) {
-                return 'Congratulations, you won! the word is ---> ' + word;
-            } else {
-                return 'Good job! you guessed right '+ letter + ' is in the word. \nYou have '+attempts +' attempts remaining.'+ '\n' + underscore.join(' ');
-            }
-        } else if (win(letter)) {
-            return 'congratulations, you won! the word is ---> ' + word;
-        } else {
-            attempts--;
-            if (gameOver(letter)){
-                if(letter.length > 1) {
-                    return 'Too bad! ' + letter+ ' is not the word!! the word is '+word+ '\nGAME OVER'
-                } else {
-                    return 'Too bad! you have no more attempts, the word is: '+word+ '\nGAME OVER'
-                }
-            } else {
-                return 'The letter '+ letter + ' is wrong. \nYou have ' + attempts +' attempts remaining.'+ '\n' + underscore.join(' ');
-            }
-            
-        }
-
-    }
+    should(game.try('a')).result('9 _ _ _ _ _');
+    should(game.try('b')).result('8 _ _ _ _ _');
+    should(game.try('c')).result('7 _ _ _ _ _');
+    should(game.try('d')).result('6 _ _ _ _ _');
+    should(game.try('e')).result('6 _ E _ _ _');
+    should(game.try('l')).result('6 _ E L L _');
+    should(game.try('hello')).result('You have guessed the word, well done!');
 }
 
-var game = new Hangman('perro', 10);
-console.log(game.try('i'));
-console.log(game.try('t'));
-console.log(game.try('e'));
-console.log(game.try('z'));
-console.log(game.try('z'));
-console.log(game.try('z'));
-console.log(game.try('z'));
-console.log(game.try('vaca'));
-//console.log(game.try('z'));
-//console.log(game.try('z'));
+test(hangmanResultsWellDoneWhenAssertingWordOnThe7thAttempt);
 
+function hangmanResultsSorryWhenFailingAssertionOfWordOnThe7thAttempt() {
+    var game = new Hangman('hello', 10);
 
-//console.log(game.try('perro'));
-//console.log(game.try('r'));
-//console.log(game.try('e'));
-//console.log(game.try('o'));
+    should(game.try('a')).result('9 _ _ _ _ _');
+    should(game.try('b')).result('8 _ _ _ _ _');
+    should(game.try('c')).result('7 _ _ _ _ _');
+    should(game.try('d')).result('6 _ _ _ _ _');
+    should(game.try('e')).result('6 _ E _ _ _');
+    should(game.try('l')).result('6 _ E L L _');
+    should(game.try('bello')).result('Sorry, you have not guessed... the correct word is HELLO.');
+}
+
+test(hangmanResultsSorryWhenFailingAssertionOfWordOnThe7thAttempt);
+
+// TODO func to convert camelCase text into normal case and spaces (e.g. "helloWorld" -> "hello world").
+
+function hangmanResultsGameOverWhenTryingToPlayAfterGameEndedWithWellDone() {
+    var game = new Hangman('hello', 10);
+
+    should(game.try('a')).result('9 _ _ _ _ _');
+    should(game.try('b')).result('8 _ _ _ _ _');
+    should(game.try('c')).result('7 _ _ _ _ _');
+    should(game.try('d')).result('6 _ _ _ _ _');
+    should(game.try('e')).result('6 _ E _ _ _');
+    should(game.try('l')).result('6 _ E L L _');
+    should(game.try('hello')).result('You have guessed the word, well done!');
+    should(game.try('bello')).result('GAME OVER.');
+}
+
+test(hangmanResultsGameOverWhenTryingToPlayAfterGameEndedWithWellDone);
+
+function hangmanResultsGameOverWhenTryingToPlayAfterGameEndedWithSorry() {
+    var game = new Hangman('hello', 10);
+
+    should(game.try('a')).result('9 _ _ _ _ _');
+    should(game.try('b')).result('8 _ _ _ _ _');
+    should(game.try('c')).result('7 _ _ _ _ _');
+    should(game.try('d')).result('6 _ _ _ _ _');
+    should(game.try('e')).result('6 _ E _ _ _');
+    should(game.try('l')).result('6 _ E L L _');
+    should(game.try('bello')).result('Sorry, you have not guessed... the correct word is HELLO.');
+    should(game.try('hello')).result('GAME OVER.');
+}
+
+test(hangmanResultsGameOverWhenTryingToPlayAfterGameEndedWithSorry);
+
+// TODO func to convert camelCase text into normal case and spaces (e.g. "helloWorld" -> "hello world").
