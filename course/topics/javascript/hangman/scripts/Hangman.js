@@ -66,7 +66,7 @@ function Hangman(word, attempts) {
 
 
 
-var game = new Hangman('hello', 10);
+//var game = new Hangman('hello', 10);
 //console.log(game.try('i'));
 //console.log(game.try('t'));
 //console.log(game.try('e'));
