@@ -32,3 +32,8 @@ function inputOfAnyKindOfDataWhichIsNotAnObjectShouldResultFalse () {
 }
 
 it(toNormalCase(inputOfAnyKindOfDataWhichIsNotAnObjectShouldResultFalse.name),inputOfAnyKindOfDataWhichIsNotAnObjectShouldResultFalse);
+
+function resultOfFunctionMustOutputASpecificMessage () {
+    expect(myCar.message()).toBe('My black Seat León is great!');
+}
+it(toNormalCase(resultOfFunctionMustOutputASpecificMessage.name),resultOfFunctionMustOutputASpecificMessage);
