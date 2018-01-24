@@ -42,27 +42,23 @@ function onlyJStartingMonths(array) {
 
 
     var loremIpsum = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.'
-    newArray = loremIpsum.split('')
     
-    
-    var vowelsCount = newArray.reduce(function (acc, char) {
-        if (['a', 'e', 'i', 'o', 'u'].indexOf(char.toLowerCase()) >= 0) {
-            var found = char.toLowerCase();
-            acc[found] = acc[found] + 1;
-            return acc;
-        } else {
-            return acc;
-        }        
-    }, {a:0, e:0, i:0, o:0, u:0});
+    function countVowels(text) {
+        var characters = text.toLowerCase().split('');
+        var vowels = 'aeiou';
+        
+        var countVowels = characters.reduce(function(acc,current){
+            if (vowels.indexOf(current)!=-1) {
+                return acc +1;
+            } else {
+                return acc;
+            }
+            //return vowels.indexOf(current)>-1? acc+1 : acc   ----> misma solución con operador ternario
+        },0);
+        return countVowels;
+    }
 
-    console.log(vowelsCount);
-    console.log(vowelsCount['a']);
-    
-var numVowels = Object.keys(vowelsCount).reduce(function (acc,v) {
-    console.log(vowelsCount['v']);
-    return acc + vowelsCount['v'];
-},0 );
-    console.log(numVowels);
+    console.log(countVowels(loremIpsum));
 
 
 
@@ -91,3 +87,19 @@ function checkMonths(month) {
 console.log(months.some(checkMonths));
 
 console.log(months.every(checkMonths));
+
+months.every(function(word){
+    return word.length >4;
+})
+
+//Write a callback function that receives an age and a callback function, if age is equal or great than 18, call the callback function to allow enter in a bar, if hasn't 18 the entrance is not allowed.
+
+function accessBar(age, callback) {
+    age >= 18 ? callback(true) : callback(false);
+}
+//la función advisor entra en accessBar como parámetro y a la vez le entra el resultado de accessBar como parámetro
+function advisor (allowed) {
+    console.log(allowed? 'the entrance is allowed' : 'the entrance is not allowed';)
+}
+
+accessBar(8,advisor)

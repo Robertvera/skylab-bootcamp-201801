@@ -1,0 +1,100 @@
+body {
+    background-color:#EDEDED;    
+}
+
+hr {
+    border-color:#8f8f923f;
+    border-width:0.5px;
+}
+
+header {
+    border-bottom-style:solid;
+    border-color:#D58A26;
+    font-family: 'Crete Round', serif;      
+}
+
+header > img {
+    margin-right:5px;
+    margin-bottom: 15px;
+    margin-left: 10%;    
+}
+
+header > aside {
+    float:right;
+    margin-top:10px;    
+    margin-right: 10%;
+}
+
+header > div {
+    vertical-align:top;
+    display: inline-block;
+
+}
+header > div > h2 {
+    font-weight:50;
+    margin-top:0.2em;
+    
+}
+
+header > div > h1 {
+    font-weight:50;
+    margin-bottom:0.2em;
+    
+}
+
+main {
+    margin-left: 10%;
+    margin-right: 10%;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.title {    
+    overflow:auto;
+    padding-top:10px;
+        
+}
+
+.title h2 {         
+    display:inline-block;
+    text-align: top;
+    color:#D58A26;
+    font-style: italic;
+    font-weight: 100;
+    font-family: 'Crete Round', serif
+}
+
+.content {
+    width:70%;
+    float:right;    
+}
+
+.content>dt>em {
+    font-size: 12px;
+    font-weight: 50;
+    line-height:0px;
+    margin-top:0.5em;
+}
+.content>dt>h3 {
+    line-height: 0px;
+    margin-bottom:0.5em;
+    font-family: 'Crete Round', serif
+}
+
+.content > li {
+    margin-left:20px;
+}
+
+a:link {
+    text-decoration:none;
+    color:black;
+}
+
+figure {    
+    position:relative;
+    
+}
+.title > div {
+    display:inline-flex;
+    width:75%;
+    float:right;
+}
