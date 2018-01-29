@@ -1,0 +1,97 @@
+html,body {
+    height:100%;
+}
+.grid-container {
+    display: grid;
+    justify-content: center;
+    align-items:center;
+    grid-template-columns: 75px 75px 75px 75px 75px;
+    grid-row-gap: 45px;
+    grid-column-gap: 45px;
+}
+
+.grid-items {
+    border:2px solid black;
+    height:80px;
+    width:80px;
+    text-align: center;
+    
+}
+.monopoly {
+    height:100%;
+    width:100%;
+    grid-column:2/5;
+    grid-row:2/5;    
+    align-items: center;        
+}
+
+.monopoly > div {
+    transform-origin:center center;
+    transform:rotate(310deg);
+    font-size:46px;
+    text-align:center;        
+    margin-top:45%;
+}
+
+.one {
+    transform-origin:center center;
+    transform:rotate(-225deg);    
+}
+.grid-items > .one {
+    margin-top:30px;
+}
+
+.five {
+    transform-origin:center center;
+    transform:rotate(225deg);
+}
+
+.grid-items > .five {
+    margin-top:30px;
+}
+
+.nine {
+    transform-origin:center center;
+    transform:rotate(-45deg);
+}
+
+.grid-items > .nine {
+    margin-top:30px;
+}
+
+.thirteen {
+    transform-origin:center center;
+    transform:rotate(45deg);
+}
+
+.grid-items > .thirteen {
+    margin-top:30px;
+}
+
+.green {
+    transform-origin:center center;
+    transform:rotate(180deg);
+    background-color: green;
+}
+
+.blue {
+    transform-origin:center center;
+    transform:rotate(90deg);
+    background-color: blue;    
+}
+
+.orange {
+    transform-origin:center center;
+    transform:rotate(270deg);    
+    background-color: orange;
+}
+.red {    
+    background-color: red;
+}
+
+.number {
+    background-color: white; 
+    margin-top:20px;
+    height:50px;
+    padding-top:10px;       
+}
