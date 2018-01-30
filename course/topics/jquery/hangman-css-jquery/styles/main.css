@@ -1,0 +1,124 @@
+* {
+    font-family: 'Courgette', cursive;
+}
+
+body {    
+    background-image: url('../img/nbook-background.jpeg');
+    background-repeat: no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+header > img {
+    width:30%;
+    height:30%;
+    margin-top: 2%;
+    margin-bottom:5%;
+}
+ #word {
+    border-top: 0px;    
+    border-bottom-color: black;
+    background-color: transparent;
+    border-right: 0px;
+    border-left: 0px;
+    font-size:24px;
+ }
+
+ header,main {
+     display:flex;
+     justify-content:center;
+     align-content: center;
+ }
+
+ #attempts {
+    border-top: 0px;    
+    border-bottom-color: black;
+    background-color: transparent;
+    border-right: 0px;
+    border-left: 0px;
+    width:50px;    
+    font-size:24px;
+    text-align: center;
+ }
+
+ #letters {
+    border-top: 0px;    
+    border-bottom-color: black;
+    background-color: transparent;
+    border-right: 0px;
+    border-left: 0px;
+    width:150px;    
+    font-size:24px;
+    text-align: center;
+ }
+
+ .play > button,#go,#try {
+     width: 130px;
+     height: 65px;
+     font-size: 24px;
+     border-radius: 10px;
+     background-color: transparent;
+     border-color:black;
+     -webkit-transition-duration: 0.8s;
+    transition-duration: 0.8s;
+ }
+
+.play > button:hover {
+    background-color: black;
+    color: white;
+}
+
+#go:hover {
+    background-color: black;
+    color: white;
+}
+
+#try:hover {
+    background-color: black;
+    color: white;
+}
+
+.word {    
+    justify-content: center;
+}
+
+.word > h2 {
+    font-size: 32px;
+}
+
+.game,.win,.lose {
+    font-size:24px;
+}
+
+.lose > button {
+    width: 150px;
+    height: 65px;
+    font-size: 24px;
+    border-radius: 10px;
+    background-color: transparent;
+    border-color:black;
+    -webkit-transition-duration: 0.8s;
+    transition-duration: 0.8s; 
+}
+
+.lose > button:hover {
+    background-color: black;
+    color: white;   
+}
+
+.win > button {
+    width: 150px;
+    height: 65px;
+    font-size: 24px;
+    border-radius: 10px;
+    background-color: transparent;
+    border-color:black;
+    -webkit-transition-duration: 0.8s;
+    transition-duration: 0.8s; 
+}
+
+.win > button:hover {
+    background-color: black;
+    color: white;   
+}

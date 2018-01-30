@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <header>
+        <!-- <h1>HANGMAN</h1> -->
+        <img src="img/HangmanBanner.png" alt="">
+    </header>
+    <main>
+        <div class="play">
+            <button>Play</button>
+        </div>
+        <div class="word" hidden>
+            <h2>Enter a word!</h2>
+            <form>
+                <input type="password" name="word" id="word">
+                <!-- <input type = "submit" value ="Go!" id="go"> -->
+            </form>
+            <h2>Number of attempts</h2>
+            <input type="number" name="attempts" id="attempts"><br><br>
+            <input type = "submit" value ="Go!" id="go">
+        </div>
+        <div class="game" hidden>
+            <h2></h2>
+            <span></span>
+            <h3>Enter a letter or word</h3>
+            <form>
+                <input type="text" name="game" id="letters">
+                <input type = "submit" value ="Try!" id="try">
+            </form>
+        </div>
+        <div class="win" hidden>
+            <h2>WELL DONE!</h2>
+            <h3></h3>
+            <button onclick="location.reload()">Play Again</button>
+        </div>
+        <div class="lose" hidden>
+            <h2>YOU LOSE!</h2>
+            <h3></h3>
+            <button onclick="location.reload()">Play Again</button>
+        </div>
+    </main>
+
+
+    <script src="vendor\jquery\jquery-3.3.1.js"></script>
+    <script src="scripts/game.js"></script>
+</body>
+
+</html>
