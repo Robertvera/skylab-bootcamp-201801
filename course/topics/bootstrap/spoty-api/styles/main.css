@@ -1,0 +1,12 @@
+body {
+  height: auto; }
+
+.screen {
+  height: 20em;
+  overflow: auto; }
+
+.screen-search {
+  height: 40em;
+  overflow: auto; }
+
+/*# sourceMappingURL=main.css.map */

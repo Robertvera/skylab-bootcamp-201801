@@ -18,7 +18,7 @@ $(document).ready(function () {
         $attempts = $('#attempts').val();
         $('.game > h2').text('You have ' + $attempts + ' attempts.');
 
-        $game = new Hangman($word, $attempts);
+        $game = new Hangman($word, $attempts,winHTML, loseHTML, inGameHTML);
 
         $('.game > span').html(function () {
             $underscore = Array($word.length).fill('_' + ' ');
@@ -54,7 +54,7 @@ $(document).ready(function () {
     }
 
 
-    function Hangman(word, attempts) {
+    function Hangman(word, attempts, won, lose, ingame) {
 
         var w = word.split('');
         var endGame = false;
@@ -87,30 +87,30 @@ $(document).ready(function () {
                     check = false;
                     if (win(charOrWord)) {
                         endGame = true;
-                        return winHTML();
+                        return won();
 
 
                     } else {
                         // return attempts + ' ' + $underscore.join(' ');
-                        return inGameHTML();
+                        return ingame();
                     }
                 } else if (win(charOrWord)) {
                     endGame = true;
-                    return winHTML();
+                    return won();
                 } else {
                     attempts--;
                     if (gameOver(charOrWord)) {
                         if (charOrWord.length > 1) {
                             endGame = true;
-                            return loseHTML();
+                            return lose();
                         } else {
                             endGame = true;
-                            return loseHTML();
+                            return lose();
                         }
                     } else {
                         // return attempts + ' ' + $underscore.join(' ');
                         $attempts--;
-                        return inGameHTML();
+                        return ingame();
                     }
 
                 }
