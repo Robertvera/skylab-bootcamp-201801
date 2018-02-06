@@ -1,0 +1,82 @@
+#artist-card {
+    padding:0px !important;    
+    margin:0px !important;
+    border:none !important;
+    background-color:transparent;
+}
+
+.card-title {    
+    right:0px;    
+}
+
+.row .col {
+    padding:0 !important;
+}
+
+.card {
+    margin: 0 !important;
+    padding:0 !important;
+}
+
+#artist-name,#album-name {
+    text-align: center;
+    right:0px;
+    padding-bottom:50%;
+    display:none;
+}
+
+.image-hover:hover #artist-name {
+    display:inline;
+}
+
+#album-card:hover #album-name {
+    display:inline;
+}
+
+#artist-list {    
+    display:inline-block;
+    -moz-column-count:3;
+    column-count:3;
+    column-gap:0;    
+    border:none;    
+}
+
+#track-list {
+    border:none;
+}
+
+
+// IMAGE HOVER
+
+.img-zoom-in img 
+{
+transition:all .4s ease-in-out;
+-webkit-transition:all .4s ease-in-out;
+-moz-transition:all .4s ease-in-out;
+-ms-transition:all .4s ease-in-out;
+-o-transition:all .4s ease-in-out;
+}
+
+.img-zoom-in:hover img 
+{
+transform:scale(1.6) rotate(10deg);
+-webkit-transform:scale(1.6) rotate(10deg);
+-moz-transform:scale(1.6) rotate(10deg);
+-ms-transform:scale(1.6) rotate(10deg);
+-o-transform:scale(1.6) rotate(10deg);
+filter: brightness(25%);
+-webkit-filter: brightness(25%);
+}
+
+.image-hover * {-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;border:none}
+.image-hover {position:relative;display:inline-block;overflow:hidden;}
+.image-hover a {text-decoration:none;border:none}
+
+
+body {
+    background: #ffb76b; /* Old browsers */
+    background: -moz-linear-gradient(left, #ffb76b 0%, #ffa73d 22%, #ff7c00 65%, #ff7c00 65%, #ff7c00 73%, #ff7f04 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #ffb76b 0%,#ffa73d 22%,#ff7c00 65%,#ff7c00 65%,#ff7c00 73%,#ff7f04 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #ffb76b 0%,#ffa73d 22%,#ff7c00 65%,#ff7c00 65%,#ff7c00 73%,#ff7f04 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffb76b', endColorstr='#ff7f04',GradientType=1 );
+}

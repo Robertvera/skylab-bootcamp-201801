@@ -207,4 +207,57 @@ console.log('The result of 24680248 debe ser 2-4-6-8-0-2-4-8--->  ', separateEve
     Sample array : var arr1=[3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3];
     Sample Output : a ( 5 times ) */
 
+function countItems(a) {
+    var acc = 0;
+    var arr = [];
+    for (var i = 0; i < a.length; i++) {
+        for (var j = 1; j < a.length; j++) {
+            if (a[i] == a[j]) {
+                acc++
+            }
+        }
+        arr.push([a[i], acc])
+        console.log(a[i], '--> ', acc, ' times.')
+        acc = 0;
+    }
+    return arr;
+}
+testArray = countItems([3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3]);
 
+
+
+//console.log('The result of [3, a, a, a, 2, 3, a, 3, a, 2, 4, 9, 3] should be a (5 times) --->  ', countItems([3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3]))
+
+//26. Write a JavaScript function to generate an array between two integers of 1 step length.
+
+function rangeBetwee(start, end) {
+    var length = end - start + 1;
+    var array = [];
+    var x;
+    for (var i = 0; i < length; i++) {
+        x = start + i;
+        array.push(x)
+    }
+    return array;
+}
+
+console.log(rangeBetwee(4, 7));
+console.log(rangeBetwee(-4, 7));
+
+//27. Write a JavaScript program to flatten a nested (any depth) array. If you pass shallow, the array will only be flattened a single level.
+
+function flat(arr,newArray) {     
+    newArray = newArray || [];
+    for (var i = 0; i < arr.length; i++) {
+        if (Array.isArray(arr[i])) {
+            flat(arr[i],newArray);
+        } else {
+            newArray.push(arr[i]);
+        }
+    }
+    return newArray;
+
+}
+
+flat([1,2,3,[4,5],6]);
+flat([1,2,[3,4,[1,2,[1,2,3]]],5,6]);

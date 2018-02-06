@@ -1,0 +1,17 @@
+body {
+  height: auto; }
+
+.card-columns {
+  column-gap: 0 !important;
+  margin: 0 !important; }
+
+.card {
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important; }
+
+span {
+  color: black;
+  font-size: 24px; }
+
+/*# sourceMappingURL=main.css.map */
