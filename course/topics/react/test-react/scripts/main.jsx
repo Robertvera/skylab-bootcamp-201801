@@ -6,7 +6,7 @@ document.getElementById('root')) */
 ReactDOM.render(
     <main>
         <section>
-            <h1>Esto va como quiere lechesssssssdsfsd</h1>
+            <h1></h1>
         </section>
     </main>,
 document.getElementById('root')    
