@@ -1,6 +1,8 @@
 
 # Created by https://www.gitignore.io/api/macos
 
+/Users/Robert/skylab/course/topics/backend/node/node_modules
+
 ### macOS ###
 *.DS_Store
 .AppleDouble
