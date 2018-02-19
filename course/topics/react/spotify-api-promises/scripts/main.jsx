@@ -14,7 +14,9 @@ class SpotyApp extends React.Component {
         }
     }
 
-
+    componentDidMount = () => {
+        console.log('Component did Mount')
+    }
 
     fixResultsWithoutPictures(sourceData) {
         for (let i = 0; i < sourceData.length; i++) {
@@ -163,6 +165,16 @@ class ListArtists extends React.Component {
         this.props.onClickArtist(artistId)
     }
 
+    componentDidMount = () => {
+        console.log('List Artists ---> Component did Mount')
+    }
+
+    componentWillReceiveProps = (nextProps) => {
+        console.log('Component will receive props',nextProps)
+    }
+
+    
+
 
     render() {
 
@@ -194,6 +206,8 @@ class ListAlbums extends React.Component {
     sendAlbum = (albumId) => {
         this.props.onClickAlbum(albumId)
     }
+
+
 
     render() {
             const albums = this.props.albums
