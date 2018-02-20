@@ -1,7 +1,9 @@
 
 # Created by https://www.gitignore.io/api/macos
 
-/Users/Robert/skylab/course/topics/backend/node/node_modules/*
+node_modules
+
+package-lock.json
 
 ### macOS ###
 *.DS_Store
