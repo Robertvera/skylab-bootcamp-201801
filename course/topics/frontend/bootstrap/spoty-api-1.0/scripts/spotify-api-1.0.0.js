@@ -3,28 +3,27 @@
  *
  * @version 1.0.0
  */
-var spotifyApi;
+
+let spotifyApi;
+
 (function () {
     "use strict";
+    const baseUrl = "https://api.spotify.com/v1/"
+    const token = 'BQCZy-yTNVPIBBFejkvDhO5O94V9Grdlaysg9uBo6E3DqZ1H5OrccMoIKLEaMfEiOdGkZDO9rJGlqcNppt2QvFVMMcyF9JQC9tmydMuVnu4iwD8Udsfceu1uTrPAtPjn4zhiVxI'
+    const headers = { Authorization: 'Bearer ' + token }
 
-    function call(url, token, handleSuccess, handleError, timeout) {
-        $.ajax({
-            url: url,
-            headers: { Authorization: "Bearer " + token },
-            timeout: timeout,
-            success: handleSuccess,
-            error: handleError
-        });
-    }
-
+    
     spotifyApi = {
-        baseUrl: "https://api.spotify.com/v1/",
-
-        token:
-            "BQC-QIhSjKyBIpuh5VZwmt2prm9dLeuyMx5i8wR4INcKWtmzJceqApRA3c1x1H900RqEbpf8z_rKae40Tj8aod3ziTNik-8Z7A3vRMxoFgeLCMc69-m5g6JE7-e15N0I2iMKc7ANxY7Seqc",
-
-        timeout: 2000,
-
+        baseUrl,
+        
+        call: function (url) {
+    
+            return fetch(url , { headers })
+        
+                    .then(res => res.json())
+                   // .then(data => resolve(data))
+           
+        },
         /**
          * Searches artists by matching a text.
          *
@@ -32,16 +31,12 @@ var spotifyApi;
          * @param {Function} handleResults - Handles the results.
          * @param {Function} handleError - Handles an error.
          */
-        searchArtists: function (query, handleResults, handleError) {
-            call(
-                this.baseUrl + "search?type=artist&q=" + query,
-                this.token,
-                function (results) {
-                    handleResults(results.artists.items);
-                },
-                handleError,
-                this.timeout
-            );
+
+        searchArtists: function (query) {
+            
+            let path = this.baseUrl + "search?type=artist&q=" + query
+      
+            return this.call(path).then(res =>  res.artists.items )
         },
 
         /**
@@ -51,16 +46,14 @@ var spotifyApi;
          * @param {Function} handleResults - Handles the results.
          * @param {Function} handleError - Handles an error.
          */
-        retrieveAlbums: function (artistId, handleResults, handleError) {
-            call(
-                this.baseUrl + "artists/" + artistId + "/albums",
-                this.token,
-                function (results) {
-                    handleResults(results.items);
-                },
-                handleError,
-                this.timeout
-            );
+        retrieveAlbums: function (artistId) {
+            
+            let path = this.baseUrl + "artists/" + artistId + "/albums"
+            console.log(path)
+            
+            return this.call(path).then(res => { console.log(res)
+                return res.items})
+
         },
 
         /**
@@ -71,32 +64,29 @@ var spotifyApi;
          * @param {Function} handleError - Handles an error.
          */
         retrieveTracks: function (albumId, handleResults, handleError) {
-            call(
-                this.baseUrl + "albums/" + albumId + "/tracks",
-                this.token,
-                function (results) {
-                    handleResults(results.items);
-                },
-                handleError,
-                this.timeout
-            );
+           
+            
+            let path = this.baseUrl + "albums/" + albumId + "/tracks"
+
+            return this.call(path).then(res => res.items)           
         },
 
         /**
-         * Retrieve track by id.
+         * Get track from an album (by track id) to play it.
          *
-         * @param {String} id - The id of the track to retrieve information from.
+         * @param {String} trackId - The id of the album to retrieve the tracks from.
          * @param {Function} handleResults - Handles the results.
          * @param {Function} handleError - Handles an error.
          */
-        getTrack: function (trackId, handleResults, handleError) {
-            call(
-                this.baseUrl + "tracks/" + trackId,
-                this.token,
-                handleResults,
-                handleError,
-                this.timeout
-            );
+        playTracks: function (trackId) {
+           
+            let path = this.baseUrl + "tracks/" + trackId
+            
+            return this.call(path)
+
+            //.then(res => res.items)
+            
+         
         }
     };
 })();

@@ -1,92 +1,87 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Spoty-API</title>
-  <!-- CUSTOM CSS -->
-  <link rel="stylesheet" href="styles/main.css">
-  <!-- BOOTSTRAP -->
-  <link rel="stylesheet" href="vendor/bootstrap/4.0.0/css/bootstrap.min.css">
-  <link href="vendor/bootstrap/4.0.0/css/mdb.min.css" rel="stylesheet">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="vendor\bootstrap\4.0.0\css\bootstrap.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="shortcut icon" href="img\favicon.ico" type="image/x-icon">
+
+    <title>SpotyLab</title>
 </head>
 
-<body>
-  <main class="container">
+<body class="bg-gradient-primary">
 
-    <div class="mb-5 mr-5 ml-5 mt-3 ">
+    <nav class="navbar py-3">
+        <a href="#" onclick="location.reload()"> <img src="img\Spotify_Logo_RGB_White.png" width="150" height="50" class="d-inline-block align-top ml-2" alt=""> </a>
+        <span class="navbar-brand mx-auto">Find your favorite music</span>
+    </nav>
+   
+   <main class="container-fluid">
+        
+        <!-- <h2 class="flex-column text-center p-5">Encuentra tu artista favorito</h2> -->
+        <div id="search" class=" row">
+           <form class="row justify-content-center col-12">
+               <input class="form-control form-control-lg mt-5 col-10 text-center text-uppercase font-weight-bold" type="text" placeholder="search for an artist" required autofocus>
+               <input class="btn-success btn-block rounded my-4 py-3 col-6 col align-self-center button"type="submit" value="Search">
+           </form>
+        <button type="button" id="backToArtists" class="btn btn-success mx-auto rounded mb-3 button">Back to artists</button>
+            
 
-      <h1 class="text-center pt-4">
-        Search an artist
-      </h1>
-
-      <form class="pt-3">
-        <div class="form-row justify-content-center">
-          <div class="col-6">
-            <label for="inputSearch" class="sr-only">Search</label>
-            <input type="text" class="form-control" placeholder="Search Artist" required autofocus>
-          </div>
-          <button class="col-2" type="submit">
-            search
-          </button>
         </div>
-      </form>
-      <!-- ARTIST LIST -->
+            
+       <section class="container-fluid col-12">
 
-      <div class="container-fluid row m-5" id="artist-list">
+           <div id="listArtists" class=" card-columns">
+               
 
-      </div>
+           </div>
 
+           <div id="listAlbums" class=" card-columns">
+                
+           </div>
 
+            <div id="listSongs" class=" card-columns">
+            
+            </div>
 
-    </div>
-    <!-- ALBUM LIST -->
-    <div class="card-columns m-5" id="album-list">
+            <div id="error">
 
-    </div>
+            </div>
 
-    <div class="bg-light screen m-5">
-      <ul class="list-group list-group-flush p-5" id="track-list">
+            <div class="modal fade" id="myPlayer" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-center" data-dismiss="modal"  id="exampleModalLongTitle"></h5>
+                           
+                            
+                        </div>
+                        <div id="player" class="d-flex justify-content-center"></div>
+                        <div class="modal-body">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+       </section>
+       
+   </main>
+   
+    
 
-      </ul>
-    </div>
-
-    <div class="modal" tabindex="-1" role="dialog" id="player">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <p>Modal body text goes here.</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Save changes</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
-  </main>
-
-  <!-- BOOTSTRAP -->  
-  <script src="vendor/jquery/jquery-3.3.1.min.js"></script>
-  <script src="vendor/popper/popper.min.js"></script>
-  <script src="vendor/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <script src="vendor/bootstrap/4.0.0/js/mdb.min.js"></script>
-  <!-- CUSTOM JS -->
-  <script src="scripts/main.js"></script>
-  <script src="scripts/spotify-api-1.0.0.js"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="vendor\jquery\3.3.1\jquery-3.3.1.min.js"></script>
+    <script src="vendor\pooper\popper.min.js"></script>
+    <script src="vendor\bootstrap\4.0.0\js\bootstrap.min.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts\spotify-api-1.0.0.js"></script>
 </body>
 
 </html>
-
-
