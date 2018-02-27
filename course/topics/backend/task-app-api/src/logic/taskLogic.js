@@ -8,7 +8,7 @@ const taskLogic = {
     create(text) {
         validate(text)
 
-        taskData.create(text)
+        taskData.create(text, false)
     },
 
     markDone(id) {
@@ -23,11 +23,11 @@ const taskLogic = {
     },
 
     listDone() {
-        return taskData.list().filter((task) => task.done == true).map(({ id, text }) => ({ id, text }))
+        return taskData.list().filter((task) => task.done == true).map(({ id, text, done }) => ({ id, text, done }))
     },
 
     listTodo() {
-        return taskData.list().filter((task) => task.done == false).map(({ id, text }) => ({ id, text }))
+        return taskData.list().filter((task) => task.done == false).map(({ id, text, done }) => ({ id, text, done }))
     },
 
     removeAll() {

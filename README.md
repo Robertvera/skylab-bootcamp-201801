@@ -174,3 +174,13 @@ You can checkout all classmates projects [here](https://github.com/manuelbarzi/s
 - [**User Register**](https://github.com/Robertvera/skylab-bootcamp-201801/tree/master/course/topics/backend/user-register)
 
 - [**Task App**](https://github.com/Robertvera/skylab-bootcamp-201801/tree/master/course/topics/backend/task-app)
+
+## Week 7
+
+- Promise.all vs Promise.race (course/topics/frontend/javascript/promise-all-vs-promise-race)
+
+- npm package: npm winston - logger para escribir logs en un fichero
+
+- [PUG.js](https://pugjs.org)
+
+- Async await (stuff/es6/async-await)

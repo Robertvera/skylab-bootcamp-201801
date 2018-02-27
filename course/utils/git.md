@@ -19,3 +19,29 @@
 * git pull origin 'branch': obtener el repositorio online para trabajarlo en local
 * git remote add upstream 'url': sirve para apuntar al repositorio original para ejecutar el fetch
 * git fetch 'upstream': 
+
+Proceso para realizar un pull request a un upstream (asumiendo que ya has realizado el fork, te bajaste el repo a tu equipo y configuraste como remoto al repositorio upstream):
+
+- git fetch --all
+- git pull
+- git checkout -b feature/newbranch develop
+
+- do your changes on code
+
+- Antes de pushear, nos aseguramos que seguimos teniendo el código más reciente de upstream/develop 
+
+- git checkout feature/newbranch  (ya deberíamos estar en la rama)
+- git fetch --all
+- git pull
+
+- si hay conflictos resolverlos
+
+- git add .
+- git cm -m "bla bla"
+- git push origin feature/newbranch
+
+- Crea el PR desde GitHub (de tu rama, hacia la develop de upstream).
+- Es buena idea no eliminar la rama de tu equipo hasta que el PR se resuelva (esto te permitirá seguir haciendo cambios en el PR si es necesario). Obviamente, tampoco la borres de GitHub.
+
+
+// Para realizar otro PR, crea una rama nueva y vuelve a seguir todos los pasos.
