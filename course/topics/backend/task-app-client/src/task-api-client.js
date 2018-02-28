@@ -1,23 +1,39 @@
-let taskAppApi;
+const axios = require('axios');
 
-(function () {
+const URL = `http://localhost:5000/api`
 
-    const formBodyParser = bodyParser.urlencoded({ extended: false });
+function getReq (path) {
+    return axios.get(path)
+}
 
-    taskAppApi = {
+function postReq (path, text){
+    return axios.post(path, {text})
+}
 
-        render: axios.get('localhost:5000/api/tasks')
-            .then((res) => {
-                res.render('index')
-            }),
+function putReq (path){
+    return axios.put(path)
+}
 
-        createTask: app.post('/tasks', {
-            text: { body: { text } }
-        })
-            .then((res) => {
+function deleteReq (path) {
+    return axios.delete(path)
+}
 
-                res.redirect('/')
-            })
-
+const taskApi = {
+    getTodoTasks: function () {
+        return getReq(`${URL}/tasks/todo`)
+    },
+    getDoneTasks: function () {
+        return getReq(`${URL}/tasks/done`)
+    },
+    createTask: function(text) {
+        return postReq(`${URL}/tasks/`,text)
+    },
+    markDone: function(id) {
+        return putReq(`${URL}/tasks/${id}`)
+    },
+    deleteTask : function(id){
+        return deleteReq(`${URL}/tasks/${id}`)
     }
-})
+}
+
+module.exports = {taskApi}
