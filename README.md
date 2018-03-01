@@ -184,3 +184,11 @@ You can checkout all classmates projects [here](https://github.com/manuelbarzi/s
 - [PUG.js](https://pugjs.org)
 
 - Async await (stuff/es6/async-await)
+
+- MongoDB
+
+arrancar MongoDB: en el directorio mongodb-osx-x6.... ejecutar
+./bin/mongod --dbpath ./db
+
+arrancar cliente MongoDB: en el directorio mongodb-osx-x6.... ejecutar
+./bin/mongo

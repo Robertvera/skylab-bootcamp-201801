@@ -1,0 +1,29 @@
+html
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title Document
+  body
+      h1 Log In
+      form(method='POST' action='/submit')
+        div
+            label(for='name') Name
+            input(type='text' id='name' placeholder='name' name='name')
+        div
+            label(for='surname') Surname
+            input(type='text' id='surname' placeholder='surname' name='surname')  
+        div
+            label(for='email') Email
+            input(type='text' id='email' placeholder='email' name='email')
+        div
+            label(for='username') UserName
+            input(type='text' id='username' placeholder='username' name='username')  
+        div
+            label(for='password') Password
+            input(type='password' id='password' placeholder='password' name='password')
+        button(type='submit') Register 
+
+        ul  
+            each user in users
+                li #{user}
