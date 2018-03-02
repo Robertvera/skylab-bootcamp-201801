@@ -5,25 +5,49 @@ html
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
     title Document
   body
-      h1 Log In
-      form(method='POST' action='/submit')
-        div
-            label(for='name') Name
-            input(type='text' id='name' placeholder='name' name='name')
-        div
-            label(for='surname') Surname
-            input(type='text' id='surname' placeholder='surname' name='surname')  
-        div
-            label(for='email') Email
-            input(type='text' id='email' placeholder='email' name='email')
-        div
-            label(for='username') UserName
-            input(type='text' id='username' placeholder='username' name='username')  
-        div
-            label(for='password') Password
-            input(type='password' id='password' placeholder='password' name='password')
-        button(type='submit') Register 
+        h1 Log In
+        form(method='POST' action='/submit')
+            div
+                label(for='name') Name
+                input(type='text' id='name' placeholder='name' name='name')
+            div
+                label(for='surname') Surname
+                input(type='text' id='surname' placeholder='surname' name='surname')  
+            div
+                label(for='email') Email
+                input(type='text' id='email' placeholder='email' name='email')
+            div
+                label(for='username') UserName
+                input(type='text' id='username' placeholder='username' name='username')  
+            div
+                label(for='password') Password
+                input(type='password' id='password' placeholder='password' name='password')
+            button(type='submit') Register 
 
-        ul  
+        h3 #{message}
+        
+        a(type='GET' href=`/killemall`) KILL'EM ALL 💀
+        ul
             each user in users
-                li #{user}
+                li #{user.name} #{user.surname} 
+                    a(type='GET' href=`/user/${user._id}` name='id') ✏️
+                    a(type='GET' href=`/delete/user/${user._id}` name='id') 🚽
+                if (user._id == id)                
+                    form(method='POST' action=`/edit/user/${user._id}`)
+                        div
+                            label(for='name') Name
+                            input(type='text' id='name' placeholder='name' name='name' value=`${user.name}`)
+                        div
+                            label(for='surname') Surname
+                            input(type='text' id='surname' placeholder='surname' name='surname' value=`${user.surname}`)  
+                        div
+                            label(for='email') Email
+                            input(type='text' id='email' placeholder='email' name='email' value=`${user.email}`)
+                        div
+                            label(for='username') UserName
+                            input(type='text' id='username' placeholder='username' name='username' value=`${user.username}`)  
+                        div
+                            label(for='password') Password
+                            input(type='password' id='password' placeholder='password' name='password' value=`${user.password}`)
+                        button(type='submit') Edit    
+                                            
