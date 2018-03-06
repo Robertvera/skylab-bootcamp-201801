@@ -192,3 +192,7 @@ arrancar MongoDB: en el directorio mongodb-osx-x6.... ejecutar
 
 arrancar cliente MongoDB: en el directorio mongodb-osx-x6.... ejecutar
 ./bin/mongo
+
+## Week 8
+
+- Connecting React with API and Mongo DB
