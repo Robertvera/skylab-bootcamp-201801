@@ -2,9 +2,9 @@ require('dotenv').config()
 
 const express = require('express')
 const bodyParser = require('body-parser')
-const { MongoClient } = require('mongodb')
 const uuid = require('uuid/v4')
 const { success, fail } = require('./api-utils')
+const mongoose = require('mongoose')
 const cors = require('cors')
 
 const host = process.env.MONGO_HOST
@@ -12,36 +12,30 @@ const port = process.env.MONGO_PORT
 const database = process.env.MONGO_DB
 const collection = process.env.MONGO_COL
 
-MongoClient.connect(`mongodb://${host}:${port}`, (err, conn) => {
-    if (err) throw err
+mongoose.connect(`mongodb://${host}:${port}/${database}`)
 
-    const db = conn.db(database)
+const User = mongoose.model('User', { id: String, name: String, surname: String, email: String, username: String, password: String })
 
-    const app = express()
+const db = mongoose.connection
 
-    app.use(cors())
+const app = express()
+
+app.use(cors())
+
+db.on('error', console.error.bind(console, 'connection error: '));
+db.once('open', function () {
 
     app.get('/api/users', (req, res) => {
-        db.collection(collection).find().project({ _id: 0, id: 1, name: 1, surname: 1, email: 1, username: 1 }).toArray((err, users) => {
-            if (err) return res.json(fail(err))
-
-            res.json(success(users))
-        })
+        User.find(({}), { _id: 0, password: 0, __v:0 })
+            .then(users => res.json(success(users)))
+            .catch(err => res.json(fail(err)))
     })
 
     app.get('/api/users/:query', (req, res) => {
         const { params: { query } } = req
-
-        db.collection(collection).find({
-            name: query,
-            surname: query,
-            username: query,
-            email: query
-        }).project({ _id: 0, id: 1, name: 1, surname: 1, email: 1, username: 1 }).toArray((err, users) => {
-            if (err) return res.json(fail(err))
-
-            res.json(success(users))
-        })
+        User.find({$or:[{name: new RegExp(query, 'i')},{surname: new RegExp(query, 'i')},{username: new RegExp(query, 'i')},{email:new RegExp(query, 'i')}]}, { _id: 0, password: 0, __v:0 })
+            .then(users => res.json(success(users)))
+            .catch(err => res.json(fail(err)))
     })
 
     const jsonBodyParser = bodyParser.json()
@@ -54,27 +48,27 @@ MongoClient.connect(`mongodb://${host}:${port}`, (err, conn) => {
         }
     }
 
-    app.post('/api/user', jsonBodyParser, (req, res) => {
+    app.post('/api/user', jsonBodyParser, (req,res) => {
         const { body: { name, surname, email, username, password } } = req
 
         Promise.resolve()
             .then(() => {
                 validate({ name, surname, email, username, password })
 
-                return db.collection(collection).findOne({ username })
+                return User.findOne({ username })                
             })
             .then(user => {
-                if (user) throw Error('username already exists')
+                if(user) throw Error ('username already exists')
 
                 const id = uuid()
 
-                return db.collection(collection).insert({ id, name, surname, email, username, password })
+                return User.create({ id, name, surname, email, username, password })
                     .then(() => id)
             })
             .then(id => {
-                res.json(success({ id }))
+                res.json(success({id}))
             })
-            .catch(err => {
+            .catch(err=> {
                 res.json(fail(err.message))
             })
     })
@@ -87,17 +81,17 @@ MongoClient.connect(`mongodb://${host}:${port}`, (err, conn) => {
             .then(() => {
                 validate({ id, name, surname, email, username, password, newUsername, newPassword })
 
-                return db.collection(collection).findOne({ username: newUsername })
+                return User.findOne({ username: newUsername })
             })
             .then(user => {
                 if (user) throw Error('username already exists')
 
-                return db.collection(collection).findOne({ id })
+                return User.findOne({ id })
             })
             .then(user => {
-                if (user.username !== username || user.password !== password) throw Error('username and/or password wrong')
+                if (user.username !== username || user.password !== password) throw Error ('username and/or password wrong')
 
-                return db.collection(collection).updateOne({ id }, { $set: { name, surname, email, username: newUsername, password: newPassword } })
+                return User.updateOne({ id } , {name, surname, email, username: newUsername, password: newPassword})
             })
             .then(() => {
                 res.json(success())
@@ -107,31 +101,31 @@ MongoClient.connect(`mongodb://${host}:${port}`, (err, conn) => {
             })
     })
 
-    app.delete('/api/user/:id', jsonBodyParser, (req, res) => {
+    app.delete('/api/user/:id', jsonBodyParser, (req,res) => {
         const { body: { username, password } } = req
         const { params: { id } } = req
 
         Promise.resolve()
-            .then(() => {
-                validate({ id, username, password })
+        .then(()=> {
+            validate({ id, username, password })
 
-                return db.collection(collection).findOne({ username })
-            })
-            .then(user => {
-                if (!user) throw Error('user does not exist')
+            return User.findOne({ username })
+        })
+        .then(user => {
+            if(!user) throw Error('user does not exist')
 
-                if (user.id !== id) throw Error('user id does not match the one provided')
+            if (user.id !== id) throw Error ('user id does not match the one provided')
 
-                if (user.username !== username || user.password !== password) throw Error('username and/or password wrong')
+            if (user.username !== username || user.password !== password) throw Error ('username and/or password wrong')
 
-                return db.collection(collection).deleteOne({ id })
-            })
-            .then(() => {
-                res.json(success())
-            })
-            .catch(err => {
-                res.json(fail(err.message))
-            })
+            return User.deleteOne({ id })
+        })
+        .then(() => {
+            res.json(success())
+        })
+        .catch(err => {
+            res.json(fail(err.message))
+        })
     })
 
     app.get('/api/user/:id', (req, res) => {
@@ -141,7 +135,7 @@ MongoClient.connect(`mongodb://${host}:${port}`, (err, conn) => {
             .then(() => {
                 validate({ id })
 
-                return db.collection(collection).findOne({ id }, { projection: { _id: 0, password: 0 } })
+                return User.findOne({ id }, { _id: 0, password: 0, __v: 0 } )
             })
             .then(user => {
                 if (!user) throw Error('user does not exist')
@@ -153,7 +147,9 @@ MongoClient.connect(`mongodb://${host}:${port}`, (err, conn) => {
             })
     })
 
+
     const port = process.env.PORT
 
     app.listen(port, () => console.log(`users api running on port ${port}`))
+
 })

@@ -29,21 +29,6 @@ MongoClient.connect(`mongodb://${host}:${port}`, (err, conn) => {
         })
     })
 
-    app.get('/api/users/:query', (req, res) => {
-        const { params: { query } } = req
-
-        db.collection(collection).find({
-            name: query,
-            surname: query,
-            username: query,
-            email: query
-        }).project({ _id: 0, id: 1, name: 1, surname: 1, email: 1, username: 1 }).toArray((err, users) => {
-            if (err) return res.json(fail(err))
-
-            res.json(success(users))
-        })
-    })
-
     const jsonBodyParser = bodyParser.json()
 
     function validate(user) {

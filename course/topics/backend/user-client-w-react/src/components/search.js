@@ -23,9 +23,20 @@ class Search extends Component {
     
         return(<div>
         <h2 className="text-center">USERS LISTING</h2>
-        <form className="row justify-content-center mt-3" onSubmit={e => { e.preventDefault(); this.submit()}}>
-            <input type="search" className="form-control col-sm-12 col-lg-4 mx-2" placeholder="Enter name, surname, email or username" onChange={(e) => this.keepInput(e.target.value)} value={this.state.query}/>
-            <button type="submit" className="btn btn-primary col-sm-12 col-lg-1 mx-2">Search</button>
+        <form 
+            className="row justify-content-center mt-3" 
+            onSubmit={e => { e.preventDefault(); this.submit()}}>
+                <input 
+                    type="search" 
+                    className="form-control col-sm-12 col-lg-4 mx-2" 
+                    placeholder="Enter name, surname, email or username" 
+                    onChange={(e) => this.keepInput(e.target.value)} 
+                    value={this.state.query}/>
+                <button 
+                    type="submit" 
+                    className="btn btn-primary col-sm-12 col-lg-1 mx-2">
+                        Search
+                </button>
         </form>
 
     </div>)

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 import {Route, HashRouter } from 'react-router-dom'
 import Tabs from './components/tabs'
 import Search from './components/search'
 import List from './components/list'
+import { usersApi } from './api/api-client'
 
 class App extends Component {
   constructor() {
@@ -16,7 +16,7 @@ class App extends Component {
   }
 
 fetchUsers = (query) => {
-  console.log(query)
+  usersApi.getUsersSearch(query).then(users => this.setState({users: users.data.data}))
 }
 
   render() {
@@ -31,7 +31,9 @@ fetchUsers = (query) => {
             <Search onSubmit={this.fetchUsers}/>
           )} />
           <Route path="/" render={() => (
-            <List />
+            <List 
+            listOfUsers = {this.state.users}
+            />
           )} />
         
         </div>
