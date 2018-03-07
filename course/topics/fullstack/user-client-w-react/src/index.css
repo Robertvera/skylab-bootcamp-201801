@@ -1,0 +1,26 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+
+#list {
+  /* text-align: center; */
+  /* border: 5px solid black; */
+}
+
+ul {
+  list-style: none;
+  text-align:left !important;
+}
+
+.card {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  
+}
+
+.card-body {
+  padding-bottom: 5px !important;
+}

@@ -5,8 +5,8 @@ import {Route, HashRouter } from 'react-router-dom'
 import Tabs from './components/tabs'
 import Search from './components/search'
 import List from './components/list'
-import {usersApi} from './api/api-client2'
-console.log("APP", usersApi)
+import { usersApi } from './api/api-client'
+
 class App extends Component {
   constructor() {
     super()
@@ -15,7 +15,7 @@ class App extends Component {
     }
   }
 
-fetchUsers = (query) => {  
+fetchUsers = (query) => {
   usersApi.getUsersSearch(query).then(users => this.setState({users: users.data.data}))
 }
 
