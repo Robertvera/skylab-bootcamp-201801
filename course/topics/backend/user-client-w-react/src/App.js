@@ -5,13 +5,15 @@ import {Route, HashRouter } from 'react-router-dom'
 import Tabs from './components/tabs'
 import Search from './components/search'
 import List from './components/list'
-import {usersApi} from './api/api-client2'
-console.log("APP", usersApi)
+import usersApi from './api/api-client2'
+
+
 class App extends Component {
   constructor() {
     super()
     this.state = {
-      users : []
+      users : [],
+     
     }
   }
 
@@ -31,10 +33,9 @@ fetchUsers = (query) => {
             <Search onSubmit={this.fetchUsers}/>
           )} />
           <Route path="/" render={() => (
-            <List 
-            listOfUsers = {this.state.users}
+            <List listOfUsers = {this.state.users}
             />
-          )} />
+          )} />          
         
         </div>
       </HashRouter>

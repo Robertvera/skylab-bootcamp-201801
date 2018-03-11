@@ -5,12 +5,7 @@
  */
 
 const axios = require('axios');
-const protocol = process.env.REACT_APP_API_PROTOCOL
-const host = process.env.REACT_APP_API_HOST
-const port = process.env.REACT_APP_API_PORT
 
-
-const URL = `${protocol}://${host}:${port}/api`
 
 function getReq (path) {
     return axios.get(path)
@@ -29,25 +24,28 @@ function deleteReq (path, username, password) {
 }
 
 const usersApi = {
+    _url() {
+        return `${this.protocol}://${this.host}:${this.port}/api`
+    },
     
     getUsers: function () {
-        return getReq(`${URL}/users`)
+        return getReq(`${this._url()}/users`)
     },
     getUsersSearch: function (query) {
-        return getReq(`${URL}/users/${query}`)        
+        return getReq(`${this._url()}/users/${query}`)        
     },
     createUser: function (name, surname, email, username, password) {
-        return postReq(`${URL}/user`)
+        return postReq(`${this._url()}/user`)
     },
     editUser: function (id, name, surname, email, username, password, newUsername, newPassword) {
-        return putReq(`${URL}/user/${id}`)
+        return putReq(`${this._url()}/user/${id}`)
     },
     deleteUser: function (id, username, password) {
-        return deleteReq(`${URL}/user/${id}`)
+        return deleteReq(`${this._url()}/user/${id}`)
     },
     getOneUser: function(id) {
-        return getReq(`${URL}/user/${id}`)
+        return getReq(`${this._url()}/user/${id}`)
     }
 }
 
-module.exports = {usersApi}
+module.exports = usersApi
