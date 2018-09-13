@@ -7,6 +7,7 @@ $('form').submit(function (e) {
     var query = $('input').val();
     $('form').trigger('reset');
 
+    
     $.ajax({
         url: "https://quiet-inlet-67115.herokuapp.com/api/search/all?q=" + query,
         timeout:2000,
